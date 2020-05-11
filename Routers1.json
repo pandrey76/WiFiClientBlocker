@@ -1,0 +1,22 @@
+{
+  "routers": [
+  {
+    "manufacturer": "SERCOMM",
+    "model": "RV6699",
+    "sn": "",
+    "snPON": "",
+    "macAddress": "",
+    "SSID": "",
+    "admin": {
+      "url": "http://IP/index.htm",
+      "login": "admin",
+      "password": ""
+    },
+    "class": {
+      "file": "SERCOMM-RV6699.py",
+      "class": "SERCOMM-RV6699"
+    }
+  }
+    ]
+}
+
