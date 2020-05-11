@@ -11,3 +11,5 @@ if __name__ == '__main__':
 
         print(type(data["routers"][0]), data["routers"][0])
         print(type(data["routers"][0]["admin"]), data["routers"][0]["admin"])
+        print(type(data["routers"][1]), data["routers"][1])
+        print(type(data["routers"][1]["class"]), data["routers"][1]["class"])

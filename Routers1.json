@@ -5,7 +5,8 @@
     "model": "RV6699",
     "sn": "",
     "snPON": "",
-    "macAddress": "",
+    "macAddressLan": "",
+    "macAddressWire": "",
     "SSID": "",
     "admin": {
       "url": "http://IP/index.htm",
@@ -15,6 +16,24 @@
     "class": {
       "file": "SERCOMM-RV6699.py",
       "class": "SERCOMM-RV6699"
+    }
+  },
+  {
+    "manufacturer": "Asustek Computer",
+    "model": "RT-N66U",
+    "sn": "",
+    "snPON": "",
+    "macAddressLan": "",
+    "macAddressWire": "",
+    "SSID": "",
+    "admin": {
+      "url": "http://IP/index.htm",
+      "login": "admin",
+      "password": ""
+    },
+    "class": {
+      "file": "Asus-RT-N66U.py",
+      "class": "Asus-RT-N66U"
     }
   }
     ]
