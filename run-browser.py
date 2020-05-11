@@ -15,27 +15,29 @@ from auth import password
 
 
 # 
-pg.hotkey("winleft")
+#pg.hotkey("winleft")
 # Run browser
 # ################
 # pg.moveTo(20, 180, 0.5)
 # pg.moveTo(250, 180, 0.5)
 # pg.leftClick()
 
-i = 0
-while i<5:
-    pg.press("down")
-    i+=1
-pg.press("right")
-pg.press("enter")
+# i = 0
+# while i<5:
+#     pg.press("down")
+#     i+=1
+# pg.press("right")
+# pg.press("enter")
 # ################
 
 time.sleep(5)
+
 # pg.typewrite("www.youtube.com", 0.3)
 # pg.typewrite(["enter"])
-pg.typewrite("http://192.168.1.254/index.htm", 0.1) # 0.3)
-pg.press("enter")
-time.sleep(10)
+
+#pg.typewrite("http://192.168.1.254/index.htm", 0.1) # 0.3)
+#pg.press("enter")
+#time.sleep(10)
 pg.typewrite("admin", 0.1)
 # x, y = pg.position()
 #pg.moveTo(x, y + 30)

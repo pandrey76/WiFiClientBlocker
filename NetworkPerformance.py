@@ -1,5 +1,5 @@
 import netifaces
-# import os
+import os
 from getmac import get_mac_address
 import webbrowser
 import time
@@ -41,8 +41,10 @@ print("Router Mac address: ", ip_mac)
 # webbrowser.open_new('http://net-informations.com')
 webbrowser.open_new('http://192.168.1.254/index.htm')
 print(webbrowser.get())
-time.sleep(2)
-pg.hotkey("alt", "f4")
+
+# time.sleep(3)
+# pg.hotkey("alt", "f4")
 time.sleep(2)
 pg.hotkey("ctrl", "c")
 
+os.system("python3 run-browser.py")
