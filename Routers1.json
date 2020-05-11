@@ -1,7 +1,7 @@
 {
   "routers": [
   {
-    "manufacturer": "SERCOMM",
+    "manufacturer": "Sercomm Corporation",
     "model": "RV6699",
     "sn": "",
     "snPON": "",
@@ -14,8 +14,8 @@
       "password": ""
     },
     "class": {
-      "file": "SERCOMM-RV6699.py",
-      "class": "SERCOMM-RV6699"
+      "file": "Sercomm-RV6699.py",
+      "class": "Sercomm-RV6699"
     }
   },
   {

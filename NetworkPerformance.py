@@ -5,46 +5,46 @@ import webbrowser
 import time
 import pyautogui as pg
 
-gws = netifaces.gateways()
-print(gws)
-print("Router IP: ", gws['default'][netifaces.AF_INET][0])
 
-addrs = netifaces.ifaddresses(gws['default'][netifaces.AF_INET][1])
-
-print("Current device MAC address: ", addrs[netifaces.AF_LINK][0]['addr'])
-
-# import os
-# myPipe = os.popen("/sbin/ifconfig","r")
-# print(myPipe.read())
-
-# print(os.system('arp -n ' + str(gws['default'][netifaces.AF_INET][0])))
-
-# import re
-# import subprocess
-# arp_out =subprocess.check_output(['arp','-lan'])
-#
-
-# re.findall(r"((\w{2,2}\:{0,1}){6})",arp_out)
+def run_default_browser(url):
+    webbrowser.open_new(url)
 
 
-# eth_mac = get_mac_address(interface="eth0")
-# win_mac = get_mac_address(interface="Ethernet 3")
-# ip_mac = get_mac_address(ip="192.168.0.1")
-ip_mac = get_mac_address(ip=gws['default'][netifaces.AF_INET][0])
-print("Router Mac address: ", ip_mac)
-
-
+def open_close_rv6699_panel(url):
+    run_default_browser(url)
+    time.sleep(2)
+    pg.hotkey("ctrl", "c")
+    os.system("python3 run-browser.py")
 
 # webbrowser.open('http://net-informations.com', new=0)
 
 # Running default web brouser
 # webbrowser.open_new('http://net-informations.com')
-webbrowser.open_new('http://192.168.1.254/index.htm')
-print(webbrowser.get())
+
+
+#webbrowser.open_new('http://192.168.1.254/index.htm')
+#print(webbrowser.get())
 
 # time.sleep(3)
 # pg.hotkey("alt", "f4")
-time.sleep(2)
-pg.hotkey("ctrl", "c")
 
-os.system("python3 run-browser.py")
+#time.sleep(2)
+#pg.hotkey("ctrl", "c")
+#
+#os.system("python3 run-browser.py")
+
+
+if __name__ == '__main__':
+    gws = netifaces.gateways()
+    print(gws)
+    print("Router IP: ", gws['default'][netifaces.AF_INET][0])
+
+    addrs = netifaces.ifaddresses(gws['default'][netifaces.AF_INET][1])
+
+    print("Current device MAC address: ", addrs[netifaces.AF_LINK][0]['addr'])
+
+    ip_mac = get_mac_address(ip=gws['default'][netifaces.AF_INET][0])
+    print("Router Mac address: ", ip_mac)
+
+    url = 'http://192.168.1.254/index.htm'
+    open_close_rv6699_panel(url)

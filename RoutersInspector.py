@@ -1,6 +1,7 @@
 import json
 
-if __name__ == '__main__':
+
+def looking_router_info():
     with open("Routers.json", "r") as read_file:
         data = json.load(read_file)
         # data = json.loads(read_file.read())
@@ -13,3 +14,8 @@ if __name__ == '__main__':
         print(type(data["routers"][0]["admin"]), data["routers"][0]["admin"])
         print(type(data["routers"][1]), data["routers"][1])
         print(type(data["routers"][1]["class"]), data["routers"][1]["class"])
+        print(data["routers"][1]["macAddressWire"])
+
+
+if __name__ == '__main__':
+    looking_router_info()
