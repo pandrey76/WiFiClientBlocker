@@ -63,7 +63,7 @@ Editing crontab setting file:
 
     Type "Enter" for insert New string symbol fnd save.
     
-     
-     
-
+If we wont to see crontab log, so we must execute next command:
+    
+    grep CRON /var/log/syslog
 

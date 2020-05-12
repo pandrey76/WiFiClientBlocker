@@ -46,6 +46,8 @@ class Sercomm_RV6699(i_router_web_interface_controller.IRouterWebInterfaceContro
         pg.press("enter")
         sleep(5)
         i_router_web_interface_controller.IRouterWebInterfaceController.close_active_window()
+        sleep(5)
+        i_router_web_interface_controller.IRouterWebInterfaceController.close_active_window()
 
     def unblocking(self):
         """
