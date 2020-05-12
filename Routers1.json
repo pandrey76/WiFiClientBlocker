@@ -8,14 +8,14 @@
     "macAddressLan": "",
     "macAddressWire": "",
     "SSID": "",
-    "admin": {
+    "loginInfo": {
       "url": "http://IP/index.htm",
       "login": "admin",
       "password": ""
     },
-    "class": {
-      "file": "Sercomm-RV6699.py",
-      "class": "Sercomm-RV6699"
+    "realisation": {
+      "file": "Sercomm_RV6699.py",
+      "class": "Sercomm_RV6699"
     }
   },
   {
@@ -26,14 +26,14 @@
     "macAddressLan": "",
     "macAddressWire": "",
     "SSID": "",
-    "admin": {
+    "loginInfo": {
       "url": "http://IP/index.htm",
       "login": "admin",
       "password": ""
     },
-    "class": {
-      "file": "Asus-RT-N66U.py",
-      "class": "Asus-RT-N66U"
+    "realisation": {
+      "file": "Asus_RT_N66U.py",
+      "class": "Asus_RT_N66U"
     }
   }
     ]
