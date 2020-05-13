@@ -43,7 +43,10 @@ class RoutersInspector:
             raise Exception("Wrong router ip address version")
         router_mac = NetworkInformer.get_mac_address_by_ip(router_ip).lower()
 
-        with open("Routers.json", "r") as read_file:
+        path_to_script_dir = os.path.dirname(os.path.realpath(__file__))
+        path_to_json_file = os.path.join(path_to_script_dir, "Routers.json")
+
+        with open(path_to_json_file, "r") as read_file:
             routers_meta_json = json.load(read_file)
             current_router = None
             for router_meta in routers_meta_json["routers"]:
@@ -61,8 +64,7 @@ class RoutersInspector:
         password = current_router["loginInfo"]["password"]
         print(password)
 
-        path_to_run_script = os.path.dirname(os.path.realpath(__file__))
-        path_to_run_script = os.path.join(path_to_run_script, "WebBrowser")
+        path_to_run_script = os.path.join(path_to_script_dir, "WebBrowser")
 
         realisation_file = current_router["realisation"]["file"]
         path_to_run_script = os.path.join(path_to_run_script, realisation_file)
