@@ -66,4 +66,8 @@ Editing crontab setting file:
 If we wont to see crontab log, so we must execute next command:
     
     grep CRON /var/log/syslog
+    
+Now work ok, bun python script inside bush script don't starting.
 
+    */1 * * * * sh /home/admin1/work/WiFiClientBlocker/run.sh >> /home/admin1/cron__run_sh__script.log    
+    
