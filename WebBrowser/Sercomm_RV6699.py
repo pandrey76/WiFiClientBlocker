@@ -4,14 +4,19 @@ from time import sleep
 import importlib.util
 # from IRouterWebInterfaceController import IRouterWebInterfaceController
 
+base_module_name = "IRouterWebInterfaceController"
+base_class_name = "IRouterWebInterfaceController"
+
 path_to_scripts = os.path.dirname(os.path.realpath(__file__))
-path_to_scripts = os.path.join(path_to_scripts, 'IRouterWebInterfaceController.py')
-spec1 = importlib.util.spec_from_file_location("IRouterWebInterfaceController.IRouterWebInterfaceController", path_to_scripts)
-i_router_web_interface_controller = importlib.util.module_from_spec(spec1)
-spec1.loader.exec_module(i_router_web_interface_controller)
+path_to_scripts = os.path.join(path_to_scripts, base_module_name + '.py')
+spec = importlib.util.spec_from_file_location(base_module_name, path_to_scripts)
+base_module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(base_module)
+
+base_class = getattr(base_module, base_class_name)
 
 
-class Sercomm_RV6699(i_router_web_interface_controller.IRouterWebInterfaceController):
+class Sercomm_RV6699(base_class):
 
     def __init__(self, url, login, password):
         """
@@ -45,9 +50,9 @@ class Sercomm_RV6699(i_router_web_interface_controller.IRouterWebInterfaceContro
         sleep(2)
         pg.press("enter")
         sleep(5)
-        i_router_web_interface_controller.IRouterWebInterfaceController.close_active_window()
+        base_class.close_active_window()
         sleep(5)
-        i_router_web_interface_controller.IRouterWebInterfaceController.close_active_window()
+        base_class.close_active_window()
 
     def unblocking(self):
         """
