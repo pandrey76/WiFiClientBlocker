@@ -37,11 +37,14 @@ class RoutersInspector:
 
         :return:
         """
+        # print("Entering turn_off")
         router_ip = NetworkInformer.get_connected_router_ip()
+        # print(router_ip)
         ip_interface = ipaddress.ip_interface(router_ip)
         if ip_interface.version != 4:
             raise Exception("Wrong router ip address version")
         router_mac = NetworkInformer.get_mac_address_by_ip(router_ip).lower()
+        # print(router_mac)
 
         path_to_script_dir = os.path.dirname(os.path.realpath(__file__))
         path_to_json_file = os.path.join(path_to_script_dir, "Routers.json")
@@ -58,30 +61,38 @@ class RoutersInspector:
                 raise Exception("Current router is not registered in Routers.json.")
 
         url = current_router["loginInfo"]["url"].replace("IP", router_ip)
-        print(url)
+        # print(url)
         login = current_router["loginInfo"]["login"]
-        print(login)
+        # print(login)
         password = current_router["loginInfo"]["password"]
-        print(password)
+        # print(password)
 
         path_to_run_script = os.path.join(path_to_script_dir, "WebBrowser")
 
-        realisation_file = current_router["realisation"]["file"]
-        path_to_run_script = os.path.join(path_to_run_script, realisation_file)
+        module_file = current_router["realisation"]["file"]
+        path_to_run_script = os.path.join(path_to_run_script, module_file)
 
-        module = realisation_file.replace(".py", "")
-        realisation_class = current_router["realisation"]["class"]
+        module_name = module_file.replace(".py", "")
+        class_name = current_router["realisation"]["class"]
 
-        spec = importlib.util.spec_from_file_location(module + '.' + realisation_class, path_to_run_script)
+        spec = importlib.util.spec_from_file_location(module_name, path_to_run_script)
         current_router_implementation_module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(current_router_implementation_module)
-        print(current_router_implementation_module)
-        current_router_implementation_object = current_router_implementation_module.Sercomm_RV6699(url, login, password)
-        print(current_router_implementation_object)
+        # print(current_router_implementation_module)
+
+        realisation_class = getattr(current_router_implementation_module, class_name)
+        current_router_implementation_object = realisation_class(url, login, password)
+        # print(current_router_implementation_object)
+
         current_router_implementation_object.blocking()
 
 
 if __name__ == '__main__':
     # looking_router_info()
-    router_inspector = RoutersInspector()
-    router_inspector.turn_off()
+    # print("RoutersInspector start!!")
+    try:
+        router_inspector = RoutersInspector()
+        router_inspector.turn_off()
+    except Exception as er:
+        print(er)
+        print(er.args)
