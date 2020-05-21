@@ -56,7 +56,6 @@ Run terminal:
 
     crontab -e
 
-
 Editing crontab setting file: 
        
     */2 * * * * /home/admin1/work/WiFiClientBlocker/venv/bin/python3 /home/admin1/work/WiFiClientBlocker/RoutersInspector.py
@@ -69,5 +68,13 @@ If we wont to see crontab log, so we must execute next command:
     
 Now work ok, bun python script inside bush script don't starting.
 
-    */1 * * * * sh /home/admin1/work/WiFiClientBlocker/run.sh >> /home/admin1/cron__run_sh__script.log    
-    
+    */1 * * * * sh /home/admin1/work/WiFiClientBlocker/run.sh >> /home/admin1/cron_run_sh.log    
+
+Варианты запуска скриптов из crontab через каждую минуту:
+
+    */1 * * * * python3 /home/admin1/work/WiFiClientBlocker/hello_crontab.py >> hello_crontab.log
+    */1 * * * * python3 /home/admin1/work/WiFiClientBlocker/RoutersInspector.py >> RoutersInspector.log
+    */1 * * * * /home/admin1/work/WiFiClientBlocker/venv/bin/python3 "/home/admin1/work/WiFiClientBlocker/RoutersInspector.py" >> RoutersInspector_from_venv.log
+
+К сожалению через crontab не удалось запускать браузер, так что данный сервис под наш проект мы использовать не будем.
+
