@@ -35,7 +35,25 @@
       "file": "Asus_RT_N66U.py",
       "class": "Asus_RT_N66U"
     }
+  },
+ {
+    "manufacturer": "Apple",
+    "model": "iPhone 6SE",
+    "sn": "",
+    "snPON": "",
+    "macAddressLan":  "",
+    "macAddressWire": "",
+    "SSID": "iPhone 6SE",
+    "loginInfo": {
+      "url": "http://IP/index.htm",
+      "login": "admin",
+      "password": ""
+    },
+    "realisation": {
+      "file": "iPhone6SE.py",
+      "class": "iPhone6SE"
+    }
   }
-    ]
+  ]
 }
 
