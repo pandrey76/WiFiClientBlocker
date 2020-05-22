@@ -78,3 +78,31 @@ Now work ok, bun python script inside bush script don't starting.
 
 К сожалению через crontab не удалось запускать браузер, так что данный сервис под наш проект мы использовать не будем.
 
+
+
+pi@raspberry:~ $ sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
+
+
+@lxpanel --profile LXDE-pi
+@pcmanfm --desktop --profile LXDE-pi
+
+#@lxterminal
+#@bash -c sleep 5
+#@/usr/bin/python3 /home/pi/work/WiFiClientBlocker/RoutersInspector.py >> /home$
+#@lxterminal 
+#@sh -c 'sleep 10'
+#@/usr/bin/python3 "/home/pi/work/WiFiClientBlocker/RoutersInspector.py"
+#@lxterminal
+#@sh -c sleep 10
+
+@/usr/bin/python3 /home/pi/work/WiFiClientBlocker/RoutersInspector.py
+@lxterminal
+#@lxterminal -e '/usr/bin/python3 /home/pi/work/WiFiClientBlocker/RoutersInspect$
+#@lxterminal -e "/usr/bin/python3 /home/pi/work/WiFiClientBlocker/RoutersInspect$
+#@lxterminal -e /usr/bin/python3 /home/pi/work/WiFiClientBlocker/RoutersInspecto$
+@/usr/bin/python3 /home/pi/work/WiFiClientBlocker/SchedulerScriptRun.py
+
+@xscreensaver -no-splash
+
+
+
