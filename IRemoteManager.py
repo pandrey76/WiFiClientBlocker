@@ -20,8 +20,11 @@ class IRemoteManager:
         :param response:
         :return:
         """
-        if response.title == "router":
-            return True
+        if response is not None:
+            if response.title.lower() == "router":
+                return True
+            else:
+                return False
         else:
             return False
 
@@ -32,11 +35,14 @@ class IRemoteManager:
         """
         response = self.__IServer.get_response()
         if self.is_my(response):
-            imp = self.__RouterInspector.getting_current_router_implementation()
-            if str(response.body).lower().find("block"):
-                imp.turn_off()
-            elif str(response.body).lower().find("recover"):
-                imp.turn_on()
+            body_str = str(response.body)
+            body_str = body_str.lower()
+            if body_str.find("block") != -1:
+                self.__RouterInspector.turn_off()
+            elif body_str.find("recover") != -1:
+                self.__RouterInspector.turn_on()
+            else:
+                pass
 
 
 if __name__ == "__main__":

@@ -66,6 +66,7 @@ class IServer:
                     #     raise Exception("Response from not trusted server" )
 
                     response = Response(author="", title=part["Subject"], body=part.get_payload(decode=True), ext_data="")
+                    return response
 
 
 
@@ -75,7 +76,7 @@ class IServer:
             except:
                 pass
             connection.logout()
-        return response
+        return None
 
 
 if __name__ == '__main__':

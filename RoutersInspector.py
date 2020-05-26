@@ -30,13 +30,6 @@ class RoutersInspector:
         """
 
         """
-        self.i = None
-
-    def getting_current_router_implementation(self):
-        """
-
-        :return:
-        """
         # print("Entering turn_off")
         router_ip = NetworkInformer.get_connected_router_ip()
         # print(router_ip)
@@ -81,25 +74,22 @@ class RoutersInspector:
         # print(current_router_implementation_module)
 
         realisation_class = getattr(current_router_implementation_module, class_name)
-        current_router_implementation_object = realisation_class(url, login, password)
+        self.__CurrentRouterImplementation_object = realisation_class(url, login, password)
         # print(current_router_implementation_object)
-        return current_router_implementation_object
 
     def turn_on(self):
         """
 
         :return:
         """
-        current_router_implementation_object = self.getting_current_router_implementation()
-        current_router_implementation_object.blocking()
+        self.__CurrentRouterImplementation_object.unblocking()
 
     def turn_off(self):
         """
 
         :return:
         """
-        current_router_implementation_object = self.getting_current_router_implementation()
-        current_router_implementation_object.blocking()
+        self.__CurrentRouterImplementation_object.blocking()
 
 
 if __name__ == '__main__':
