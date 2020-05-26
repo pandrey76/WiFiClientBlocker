@@ -15,6 +15,9 @@ echo "Beginning execution run.sh shell script."
 
 # python3 "RoutersInspector.py"
 
+# Корремктная запись запуска скрипта Python через crontab
+# python3 "/home/admin1/work/WiFiClientBlocker/hello_crontab.py" >> "/home/admin1/running_run_sh_file.log"
+
 echo "Ended execution run.sh shell script."
 
 # exit
