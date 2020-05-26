@@ -32,7 +32,7 @@ class RoutersInspector:
         """
         self.i = None
 
-    def turn_off(self):
+    def getting_current_router_implementation(self):
         """
 
         :return:
@@ -83,13 +83,30 @@ class RoutersInspector:
         realisation_class = getattr(current_router_implementation_module, class_name)
         current_router_implementation_object = realisation_class(url, login, password)
         # print(current_router_implementation_object)
+        return current_router_implementation_object
 
+    def turn_on(self):
+        """
+
+        :return:
+        """
+        current_router_implementation_object = self.getting_current_router_implementation()
+        current_router_implementation_object.blocking()
+
+    def turn_off(self):
+        """
+
+        :return:
+        """
+        current_router_implementation_object = self.getting_current_router_implementation()
         current_router_implementation_object.blocking()
 
 
 if __name__ == '__main__':
     # looking_router_info()
     # print("RoutersInspector start!!")
+    # import webbrowser
+    # webbrowser.open_new("http://localhost")
     try:
         router_inspector = RoutersInspector()
         router_inspector.turn_off()
