@@ -1,4 +1,10 @@
 {
+  "trusted_source" :[
+            "",
+            "",
+            "",
+            ""
+  ],
   "remote_sources": [
     {
       "source_path" : "",
