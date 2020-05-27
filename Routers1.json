@@ -53,6 +53,25 @@
       "file": "iPhone6SE.py",
       "class": "iPhone6SE"
     }
+  },
+  {
+    "manufacturer": "Huawei",
+    "model": "MegaFon R100-1",
+    "sn": "",
+    "snPON": "",
+    "IMEI": "",
+    "macAddressLan":  "",
+    "macAddressWire": "",
+    "SSID": "",
+    "loginInfo": {
+      "url": "http://IP/index.htm",
+      "login": "admin",
+      "password": ""
+    },
+    "realisation": {
+      "file": "Huawei_R100_1.py",
+      "class": "Huawei_R100_1"
+    }
   }
   ]
 }
