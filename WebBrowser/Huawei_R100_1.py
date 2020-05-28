@@ -29,6 +29,47 @@ class Huawei_R100_1(base_class):
         """
         super().__init__(url, login, password)
 
+    def prepare(self):
+        """
+        """
+        i = 0
+        while i < 7:
+            pg.press("tab")
+            i += 1
+            sleep(1)
+
+        pg.press("enter")
+        sleep(5)
+
+        i = 0
+        while i < 13:
+            pg.press("tab")
+            i += 1
+            sleep(1)
+
+        pg.press("enter")
+        sleep(5)
+
+        i = 0
+        while i < 18:
+            pg.press("tab")
+            i += 1
+            sleep(1)
+
+    def activate(self):
+        """
+        """
+        i = 0
+        while i < 4:
+            pg.press("tab")
+            i += 1
+            sleep(1)
+            
+        pg.moveTo(590, 230)
+        sleep(5)
+        pg.leftClick()
+        
+
     def blocking(self):
         """
 
@@ -38,33 +79,26 @@ class Huawei_R100_1(base_class):
         self.run_default_browser()
 
         # Login admin
-        sleep(2)
+        sleep(15)
         self.login_administrator()
 
         # Make blocking actions
-        sleep(4)
-        i = 0
-        while i < 7:
-            pg.press("tab")
-            i += 1
-
-        pg.press("enter")
-        sleep(2)
-
-        i = 0
-        while i < 13:
-            pg.press("tab")
-            i += 1
-
-        pg.press("enter")
-        sleep(2)
-
-        i = 0
-        while i < 18:
-            pg.press("tab")
-            i += 1
-
-        sleep(2)
+        sleep(15)
+        self.prepare()
+        
+        sleep(5)
+        pg.moveTo(607, 270)
+        pg.leftClick()
+        
+        sleep(5)
+        self.activate()
+        
+        #sleep(15)
+        #current_mposition_x, current_mposition_y = pg.position()
+        #print("x: ", current_mposition_x)
+        #print("y: ", current_mposition_y)
+        
+        sleep(10)
         base_class.close_active_window()
 
     def unblocking(self):
@@ -72,7 +106,30 @@ class Huawei_R100_1(base_class):
 
         :return:admin
         """
-        return None
+        
+        self.run_default_browser()
+        # Login admin
+        sleep(15)
+        self.login_administrator()
+
+        # Make unblocking actions
+        sleep(15)
+        self.prepare()
+        
+        sleep(5)
+        pg.moveTo(513, 270)
+        pg.leftClick()
+        
+        sleep(5)
+        self.activate()
+        
+        # sleep(15)
+        # current_mposition_x, current_mposition_y = pg.position()
+        # print("x: ", current_mposition_x)
+        # print("y: ", current_mposition_y)
+        
+        sleep(10)
+        base_class.close_active_window()
 
 
 if __name__ == '__main__':

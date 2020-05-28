@@ -30,6 +30,11 @@ class RoutersInspector:
         """
 
         """
+        self.__CurrentRouterImplementation_object = None
+    
+    def geting_current_router_imlementation(self):
+        """
+        """
         # print("Entering turn_off")
         router_ip = NetworkInformer.get_connected_router_ip()
         # print(router_ip)
@@ -51,7 +56,7 @@ class RoutersInspector:
                     current_router = router_meta
                     break
             if current_router is None:
-                raise Exception("Current router is not registered in Routers.json.")
+                raise Exception("Current router is not registered in Routers.json (MacAddress of router is " + router_mac + ").")
 
         url = current_router["loginInfo"]["url"].replace("IP", router_ip)
         # print(url)
@@ -82,6 +87,8 @@ class RoutersInspector:
 
         :return:
         """
+        self.__CurrentRouterImplementation_object = None
+        self.geting_current_router_imlementation()
         self.__CurrentRouterImplementation_object.unblocking()
 
     def turn_off(self):
@@ -89,6 +96,8 @@ class RoutersInspector:
 
         :return:
         """
+        self.__CurrentRouterImplementation_object = None
+        self.geting_current_router_imlementation()
         self.__CurrentRouterImplementation_object.blocking()
 
 
@@ -100,6 +109,8 @@ if __name__ == '__main__':
     try:
         router_inspector = RoutersInspector()
         router_inspector.turn_off()
+        #router_inspector.turn_on()
+        
     except Exception as er:
         print(er)
         print(er.args)
