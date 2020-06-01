@@ -11,9 +11,13 @@ def job():
 
     # obj = RoutersInspector()
     # obj.turn_off()
-
-    remote_manager = IRemoteManager()
-    remote_manager.process()
+    try:
+        remote_manager = IRemoteManager()
+        remote_manager.process()
+    except Exception as er:
+        with open("scheduler_err.log", 'a') as g:
+            g.write(str(er))
+            g.write(os.linesep)
 
 
 schedule.every(1).minutes.do(job)
