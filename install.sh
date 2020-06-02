@@ -1,4 +1,4 @@
-      #!/bin/bash
+#!/bin/bash
 
 base_work_folder=""
 base_python_interpreter=""
@@ -37,8 +37,52 @@ $base_python_interpreter -m venv venv
 
 pip3 install -U pip
 pip3 install -r requirements.txt
+
 # pip3 install --ignore-installed -r requirements.txt
 
+
+#GECKO_DRIVER_INSTALL_DIR=$(pwd)
+#url=""
+#architect=$(uname --m)
+#SUB="64"
+## shellcheck disable=SC1069
+#if["$architect" =~ .*"$SUB".*]
+#  then
+#  url=$(curl -s 'https://api.github.com/repos/mozilla/geckodriver/releases/latest' | jq -r '.assets[].browser_download_url | select(contains("linux64"))')
+#  architect = "x64"
+#else
+#  url=$(curl -s 'https://api.github.com/repos/mozilla/geckodriver/releases/latest' | jq -r '.assets[].browser_download_url | select(contains("linux32"))')
+#  architect = "x32"
+#fi
+#  echo "Current machine architect type is $architect"
+#
+#curl -s -L "$url" | tar -xz
+
+#
+#echo "url2"
+#echo "$url2"
+#
+## Не работает
+##echo "$HOSTTYPE"
+##echo "$OSTYPE"
+#
+#echo "$HOME"
+#
+##curl -s -L "$url2" | tar -xz
+##chmod +x geckodriver
+##sudo mv geckodriver "$INSTALL_DIR"
+#echo "installed geckodriver binary in $INSTALL_DIR"
+###
+
+## Возвращаем информацию об последней версией
+#json=$(curl -s https://api.github.com/repos/mozilla/geckodriver/releases/latest)
+#
+#url=$(echo "$json" | jq -r '.assets[].browser_download_url | select(contains("linux64"))')
+#
+#curl -s -L "$url" | tar -xz
+#chmod +x geckodriver
+#sudo mv geckodriver "$INSTALL_DIR"
+#echo "installed geckodriver binary in $INSTALL_DIR"
 
 
 
