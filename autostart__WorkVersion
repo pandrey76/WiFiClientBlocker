@@ -43,4 +43,14 @@
 @xscreensaver -no-splash
 
 ######################################################################################################
+
+# 3 variant
+
+@lxpanel --profile LXDE-pi
+@pcmanfm --desktop --profile LXDE-pi
+
+@/home/pi/work/WiFiClientBlocker/venv/bin/python3 /home/pi/work/WiFiClientBlocker/SchedulerScriptRun.py
+
+@xscreensaver -no-splash
+
 ######################################################################################################
