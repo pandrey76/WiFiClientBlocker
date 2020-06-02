@@ -253,3 +253,158 @@ echo "installed geckodriver binary in $INSTALL_DIR"
 # Metod 2 (Not work)
     sudo nano ~/.config/lxsession/LXDE/autostart
 
+#admin1@ubuntu18:/$ cat /etc/os-release
+#    NAME="Ubuntu"
+#    VERSION="18.04.4 LTS (Bionic Beaver)"
+#    ID=ubuntu
+#    ID_LIKE=debian
+#    PRETTY_NAME="Ubuntu 18.04.4 LTS"
+#    VERSION_ID="18.04"
+#    HOME_URL="https://www.ubuntu.com/"
+#    SUPPORT_URL="https://help.ubuntu.com/"
+#    BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+#    PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+#    VERSION_CODENAME=bionic
+#    UBUNTU_CODENAME=bionic
+
+#admin1@ubuntu18:/$ lsb_release -a
+#    No LSB modules are available.
+#    Distributor ID:	Ubuntu
+#    Description:	Ubuntu 18.04.4 LTS
+#    Release:	18.04
+#    Codename:	bionic
+#
+#admin1@ubuntu18:/$ hostnamectl
+#    Static hostname: ubuntu18
+#    Icon name: computer-desktop
+#    Chassis: desktop
+#    Machine ID: 40ac2e4867354807898b27dac3d6375c
+#    Boot ID: 6c9d1b71f35843d8879e18f02d58e42d
+#    Operating System: Ubuntu 18.04.4 LTS
+#    Kernel: Linux 4.15.0-99-generic
+#    Architecture: x86-64
+#
+#admin1@ubuntu18:/$ uname -r
+#    4.15.0-99-generic
+#
+#admin1@ubuntu18:/$ cat /etc/issue
+#    Ubuntu 18.04.4 LTS \n \l
+
+#admin1@ubuntu18:/$ uname -i
+#    x86_64
+
+####
+INSTALL_DIR="/usr/local/bin"
+# Возвращаем информацию об последней версией
+
+json=$(curl -s 'https://api.github.com/repos/mozilla/geckodriver/releases/latest')
+#echo "$json"
+url1=$(echo "$json" | jq -r '.assets[].browser_download_url | select(contains("linux64"))')
+echo "url1"
+echo "$url1"
+
+url2=$(curl -s 'https://api.github.com/repos/mozilla/geckodriver/releases/latest' | jq -r '.assets[].browser_download_url | select(contains("linux64"))')
+
+echo "url2"
+echo "$url2"
+
+# Не работает
+#echo "$HOSTTYPE"
+#echo "$OSTYPE"
+
+echo "$HOME"
+
+#curl -s -L "$url2" | tar -xz
+#chmod +x geckodriver
+#sudo mv geckodriver "$INSTALL_DIR"
+echo "installed geckodriver binary in $INSTALL_DIR"
+###
+
+
+echo "Beginning execution run.sh shell script."
+
+# Запуск скрипта python из через crontab
+# python3 /home/admin1/work/WiFiClientBlocker/RoutersInspector.py
+
+# Запуск скрипта python из venv через crontab
+# Вариант №1
+#/home/admin1/work/WiFiClientBlocker/venv/bin/python3 "/home/admin1/work/WiFiClientBlocker/RoutersInspector.py"
+
+# Вариант №2
+# cd "/home/admin1/work/WiFiClientBlocker"
+# venv/bin/python3 "RoutersInspector.py"
+
+# python3 "RoutersInspector.py"
+
+# Корремктная запись запуска скрипта Python через crontab
+# python3 "/home/admin1/work/WiFiClientBlocker/hello_crontab.py" >> "/home/admin1/running_run_sh_file.log"
+
+
+#admin1@ubuntu18:/$ cat /etc/os-release
+#    NAME="Ubuntu"
+#    VERSION="18.04.4 LTS (Bionic Beaver)"
+#    ID=ubuntu
+#    ID_LIKE=debian
+#    PRETTY_NAME="Ubuntu 18.04.4 LTS"
+#    VERSION_ID="18.04"
+#    HOME_URL="https://www.ubuntu.com/"
+#    SUPPORT_URL="https://help.ubuntu.com/"
+#    BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+#    PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+#    VERSION_CODENAME=bionic
+#    UBUNTU_CODENAME=bionic
+
+#admin1@ubuntu18:/$ lsb_release -a
+#    No LSB modules are available.
+#    Distributor ID:	Ubuntu
+#    Description:	Ubuntu 18.04.4 LTS
+#    Release:	18.04
+#    Codename:	bionic
+#
+#admin1@ubuntu18:/$ hostnamectl
+#    Static hostname: ubuntu18
+#    Icon name: computer-desktop
+#    Chassis: desktop
+#    Machine ID: 40ac2e4867354807898b27dac3d6375c
+#    Boot ID: 6c9d1b71f35843d8879e18f02d58e42d
+#    Operating System: Ubuntu 18.04.4 LTS
+#    Kernel: Linux 4.15.0-99-generic
+#    Architecture: x86-64
+#
+#admin1@ubuntu18:/$ uname -r
+#    4.15.0-99-generic
+#
+#admin1@ubuntu18:/$ cat /etc/issue
+#    Ubuntu 18.04.4 LTS \n \l
+
+#admin1@ubuntu18:/$ uname -i
+#    x86_64
+
+####
+INSTALL_DIR="/usr/local/bin"
+# Возвращаем информацию об последней версией
+
+json=$(curl -s 'https://api.github.com/repos/mozilla/geckodriver/releases/latest')
+#echo "$json"
+url1=$(echo "$json" | jq -r '.assets[].browser_download_url | select(contains("linux64"))')
+echo "url1"
+echo "$url1"
+
+url2=$(curl -s 'https://api.github.com/repos/mozilla/geckodriver/releases/latest' | jq -r '.assets[].browser_download_url | select(contains("linux64"))')
+
+echo "url2"
+echo "$url2"
+
+# Не работает
+#echo "$HOSTTYPE"
+#echo "$OSTYPE"
+
+echo "$HOME"
+
+#curl -s -L "$url2" | tar -xz
+#chmod +x geckodriver
+#sudo mv geckodriver "$INSTALL_DIR"
+echo "installed geckodriver binary in $INSTALL_DIR"
+###
+
+echo "Ended execution run.sh shell script."
