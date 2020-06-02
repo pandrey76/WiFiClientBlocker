@@ -106,3 +106,150 @@ pi@raspberry:~ $ sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
 
 
 
+
+#base_python_interpreter=""
+#project_domain=""
+#project_path=`pwd`
+#
+#read -p "Python interpreter: " base_python_interpreter
+#read -p "Your domain without protocol (for example, google.com): " project_domain
+#`$base_python_interpreter -m venv env`
+#source env/bin/activate
+#pip install -U pip
+#pip install -r requirements.txt
+#
+#sed -i "s~dbms_template_path~$project_path~g" nginx/site.conf systemd/gunicorn.service
+#sed -i "s~dbms_template_domain~$project_domain~g" nginx/site.conf src/config/settings.py
+#
+#sudo ln -s $project_path/nginx/site.conf /etc/nginx/sites-enabled/
+#sudo ln -s $project_path/systemd/gunicorn.service /etc/systemd/system/
+#
+#sudo systemctl daemon-reload
+#sudo systemctl start gunicorn
+#sudo systemctl enable gunicorn
+#sudo service nginx restart
+
+
+# Getting curent user
+echo "$USER"
+ or
+whoami
+
+# What the os version type
+cat proc/version
+> Linux version 4.19.0-9-amd64 (debian-kernel@lists.debian.org) (gcc version 8.3.0 (Debian 8.3.0-6)) #1 SMP Debian 4.19.118-2 (2020-04-29)
+
+#admin1@ubuntu18:/$ cat /etc/os-release
+#    NAME="Ubuntu"
+#    VERSION="18.04.4 LTS (Bionic Beaver)"
+#    ID=ubuntu
+#    ID_LIKE=debian
+#    PRETTY_NAME="Ubuntu 18.04.4 LTS"
+#    VERSION_ID="18.04"
+#    HOME_URL="https://www.ubuntu.com/"
+#    SUPPORT_URL="https://help.ubuntu.com/"
+#    BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+#    PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+#    VERSION_CODENAME=bionic
+#    UBUNTU_CODENAME=bionic
+
+#admin1@ubuntu18:/$ lsb_release -a
+#    No LSB modules are available.
+#    Distributor ID:	Ubuntu
+#    Description:	Ubuntu 18.04.4 LTS
+#    Release:	18.04
+#    Codename:	bionic
+#
+#admin1@ubuntu18:/$ hostnamectl
+#    Static hostname: ubuntu18
+#    Icon name: computer-desktop
+#    Chassis: desktop
+#    Machine ID: 40ac2e4867354807898b27dac3d6375c
+#    Boot ID: 6c9d1b71f35843d8879e18f02d58e42d
+#    Operating System: Ubuntu 18.04.4 LTS
+#    Kernel: Linux 4.15.0-99-generic
+#    Architecture: x86-64
+#
+#admin1@ubuntu18:/$ uname -r
+#    4.15.0-99-generic
+#
+#admin1@ubuntu18:/$ cat /etc/issue
+#    Ubuntu 18.04.4 LTS \n \l
+
+#admin1@ubuntu18:/$ uname --m
+    #x86_64
+
+#admin1@ubuntu18:/$ uname -i
+#    x86_64
+
+
+# Installing FireFox
+sudo apt update
+sudo apt install firefox-esr
+sudo apt update
+firefox -v
+
+# Installing latest version of geckodriver for Selenium 
+# One way not automatic
+Here are the steps:
+
+    Go to the geckodriver releases page. Find the latest version of the driver for your platform and download it. For example:
+
+        wget https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz
+        # wget "https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz"        
+
+    Extract the file with:
+
+        tar -xvzf geckodriver*
+
+    Make it executable:
+
+        chmod +x geckodriver
+
+    Add the driver to your PATH so other tools can find it:
+
+        export PATH=$PATH:/path-to-extracted-file/.
+        
+        # sudo cp /home/pi/Downloads/geckodriver /usr/local/bin/geckodriver 
+
+
+# Way Two
+# Getting latest version full automatic
+# Need to see more carefully
+####
+# Устанавливаем JSON query
+sudo apt install jq
+
+INSTALL_DIR="/usr/local/bin"
+# Возвращаем информацию об последней версией
+json=$(curl -s https://api.github.com/repos/mozilla/geckodriver/releases/latest)
+
+url=$(echo "$json" | jq -r '.assets[].browser_download_url | select(contains("linux64"))')
+
+curl -s -L "$url" | tar -xz
+chmod +x geckodriver
+sudo mv geckodriver "$INSTALL_DIR"
+echo "installed geckodriver binary in $INSTALL_DIR"
+###
+
+# Editing Raspbean LXDE Desktop autostart file.
+# Running python script in user mode.
+    sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
+    
+        @lxpanel --profile LXDE-pi
+        @pcmanfm --desktop --profile LXDE-pi
+
+        @lxterminal
+        @lxterminal -e /usr/bin/python3
+        @lxterminal -e /home/pi/work/WiFiClientBlocker/venv/bin/python3
+
+        @/home/pi/work/WiFiClientBlocker/venv/bin/python3 /home/pi/work/WiFiClientBlocker/ShedulerScriptRun.py
+        
+        #Work to
+        #@/usr/bin/python3 /home/pi/work/WiFiClientBlocker/SchedulerScriptRun.py
+
+        @xscreensaver -no-splash
+    
+# Metod 2 (Not work)
+    sudo nano ~/.config/lxsession/LXDE/autostart
+
