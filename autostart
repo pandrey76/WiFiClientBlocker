@@ -1,24 +1,13 @@
 @lxpanel --profile LXDE-pi
 @pcmanfm --desktop --profile LXDE-pi
 
-#@lxterminal
-#@bash -c sleep 5
-#@/usr/bin/python3 /home/pi/work/WiFiClientBlocker/RoutersInspector.py >> /home/pi/run_sh_log_file.log
-#@lxterminal 
-#@sh -c 'sleep 10'
-#@/usr/bin/python3 "/home/pi/work/WiFiClientBlocker/RoutersInspector.py"
-#@lxterminal
-#@sh -c sleep 10
-#@/usr/bin/python3 /home/pi/work/WiFiClientBlocker/RoutersInspector.py
 #Not work
 #@/home/pi/work/WiFiClientBlocker/venv/bin/python3 /home/pi/work/WiFiClientBlocker/SchedulerScriptRun.py
+#@lxterminal
+#@lxterminal -e /usr/bin/python3
+#@lxterminal -e /home/pi/work/WiFiClientBlocker/venv/bin/python3
 
-@lxterminal
-@lxterminal -e '/usr/bin/python3 /home/pi/work/WiFiClientBlocker/RoutersInspector.py'
-@lxterminal -e "/usr/bin/python3 /home/pi/work/WiFiClientBlocker/RoutersInspector.py"
-@lxterminal -e /usr/bin/python3 /home/pi/work/WiFiClientBlocker/RoutersInspector.py
-
-@/usr/bin/python3 /home/pi/work/WiFiClientBlocker/SchedulerScriptRun.py
+@/home/pi/work/WiFiClientBlocker/venv/bin/python3 /home/pi/work/WiFiClientBlocker/SchedulerScriptRun.py
 
 @xscreensaver -no-splash
 

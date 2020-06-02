@@ -29,5 +29,18 @@
 
 # 2 вариант
 
+@lxpanel --profile LXDE-pi
+@pcmanfm --desktop --profile LXDE-pi
+
+#Not work
+#@/home/pi/work/WiFiClientBlocker/venv/bin/python3 /home/pi/work/WiFiClientBlocker/SchedulerScriptRun.py
+#@lxterminal
+#@lxterminal -e /usr/bin/python3
+#@lxterminal -e /home/pi/work/WiFiClientBlocker/venv/bin/python3
+
+@/home/pi/work/WiFiClientBlocker/venv/bin/python3 /home/pi/work/WiFiClientBlocker/SchedulerScriptRun.py
+
+@xscreensaver -no-splash
+
 ######################################################################################################
 ######################################################################################################
