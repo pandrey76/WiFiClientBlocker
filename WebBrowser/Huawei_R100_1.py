@@ -69,8 +69,7 @@ class Huawei_R100_1(base_class):
         sleep(5)
         pg.leftClick()
         
-
-    def blocking(self):
+    def block_devices(self):
         """
 
         :return:
@@ -101,7 +100,7 @@ class Huawei_R100_1(base_class):
         sleep(10)
         base_class.close_active_window()
 
-    def unblocking(self):
+    def recover_devices(self):
         """
 
         :return:admin

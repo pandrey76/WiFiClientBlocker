@@ -29,7 +29,7 @@ class Sercomm_RV6699(base_class):
         """
         super().__init__(url, login, password)
 
-    def blocking(self):
+    def block_devices(self):
         """
 
         :return:
@@ -56,7 +56,7 @@ class Sercomm_RV6699(base_class):
         sleep(5)
         base_class.close_active_window()
 
-    def unblocking(self):
+    def recover_devices(self):
         """
 
         :return:admin

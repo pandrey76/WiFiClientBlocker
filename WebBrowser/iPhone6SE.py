@@ -29,7 +29,7 @@ class iPhone6SE(base_class):
         """
         super().__init__(url, login, password)
 
-    def blocking(self):
+    def block_devices(self):
         """
 
         :return:
@@ -54,7 +54,7 @@ class iPhone6SE(base_class):
         sleep(2)
         base_class.close_active_window()
 
-    def unblocking(self):
+    def recover_devices(self):
         """
 
         :return:admin

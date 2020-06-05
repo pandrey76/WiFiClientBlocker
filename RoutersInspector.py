@@ -26,13 +26,21 @@ class RoutersInspector:
 
     """
 
-    def __init__(self):
+    def __init__(self, response_body):
         """
 
         """
         self.__CurrentRouterImplementation_object = None
-    
-    def geting_current_router_imlementation(self):
+        self.__ResponseBody = response_body
+        self.__Action = None
+        self.__Data = None
+        self.parse()
+
+    response_body = property(lambda self: self.__ResponseBody)
+    """
+    """
+
+    def geting_current_router_implementation(self):
         """
         """
         # print("Entering turn_off")
@@ -82,23 +90,44 @@ class RoutersInspector:
         self.__CurrentRouterImplementation_object = realisation_class(url, login, password)
         # print(current_router_implementation_object)
 
-    def turn_on(self):
+    # def turn_on(self):
+    #     """
+    #
+    #     :return:
+    #     """
+    #     self.__CurrentRouterImplementation_object = None
+    #     self.geting_current_router_implementation()
+    #     self.__CurrentRouterImplementation_object.unblocking()
+    #
+    # def turn_off(self):
+    #     """
+    #
+    #     :return:
+    #     """
+    #     self.__CurrentRouterImplementation_object = None
+    #     self.geting_current_router_implementation()
+    #     self.__CurrentRouterImplementation_object.blocking()
+
+    def parse(self):
         """
 
         :return:
         """
-        self.__CurrentRouterImplementation_object = None
-        self.geting_current_router_imlementation()
-        self.__CurrentRouterImplementation_object.unblocking()
+        return None
 
-    def turn_off(self):
+    def process(self):
         """
 
         :return:
         """
-        self.__CurrentRouterImplementation_object = None
-        self.geting_current_router_imlementation()
-        self.__CurrentRouterImplementation_object.blocking()
+        if self.__Action == "block_devices":
+            self.__CurrentRouterImplementation_object.block_devices()
+        elif self.__Action == "recover_devices":
+            self.__CurrentRouterImplementation_object.recover_devices()
+        elif self.__Action == "change_wifi_password":
+            self.__CurrentRouterImplementation_object.change_wifi_password()
+        else:
+            raise Exception("Wrong support method")
 
 
 if __name__ == '__main__':
@@ -109,7 +138,7 @@ if __name__ == '__main__':
     try:
         router_inspector = RoutersInspector()
         router_inspector.turn_off()
-        #router_inspector.turn_on()
+        #router_inspector.recover_devices()
         
     except Exception as er:
         print(er)

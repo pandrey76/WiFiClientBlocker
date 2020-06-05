@@ -44,12 +44,12 @@ class IRouterWebInterfaceController:
         """
         return self.__delay_after_enter_login
 
-    def blocking(self):
+    def block_devices(self):
         """
         """
         raise Exception("No implement")
 
-    def unblocking(self):
+    def recover_devices(self):
         """
 
         :return:
@@ -80,6 +80,22 @@ class IRouterWebInterfaceController:
         :return:
         """
         pg.hotkey("alt", "f4")
+
+    @classmethod
+    def check_support_interface_methods(cls, method_name):
+        """
+
+        :param method_name:
+        :return:
+        """
+        support_methods = [
+            "block_devices",
+            "recover_devices",
+            "change_wifi_password"
+            ]
+        if method_name in support_methods:
+            return True
+        return False
 
 
 if __name__ == '__main__':
