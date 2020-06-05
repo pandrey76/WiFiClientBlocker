@@ -35,14 +35,10 @@ class IRemoteManager:
         """
         response = self.__IServer.get_response()
         if self.is_my(response):
-            body_str = str(response.body)
-            body_str = body_str.lower()
-            if body_str.find("block") != -1:
-                self.__RouterInspector.turn_off()
-            elif body_str.find("recover") != -1:
-                self.__RouterInspector.turn_on()
-            else:
-                pass
+            # body_str = str(response.body)
+            # body_str = body_str.lower()
+            router_inspector = RoutersInspector(response.body)
+            router_inspector.process()
 
 
 if __name__ == "__main__":

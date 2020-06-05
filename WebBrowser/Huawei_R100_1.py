@@ -20,14 +20,21 @@ base_class = getattr(base_module, base_class_name)
 
 class Huawei_R100_1(base_class):
 
-    def __init__(self, url, login, password):
+    def __init__(self, url, login, password, data):
         """
 
         :param url:
         :param login:
         :param password:
         """
-        super().__init__(url, login, password)
+        super().__init__(url, login, password, data)
+
+    def check_data(self):
+        """
+
+        :return:
+        """
+        raise Exception("No implement")
 
     def prepare(self):
         """

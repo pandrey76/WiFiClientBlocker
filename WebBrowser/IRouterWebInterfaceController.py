@@ -7,7 +7,7 @@ class IRouterWebInterfaceController:
     """
     """
 
-    def __init__(self, url, login, password):
+    def __init__(self, url, login, password, data):
         """
 
         :param url:
@@ -19,6 +19,7 @@ class IRouterWebInterfaceController:
         self._Password = password
         self.__delay_before_enter_login = 15
         self.__delay_after_enter_login = 15
+        self._Data = data
 
     url = property(lambda self: self._URL)
     """
@@ -50,6 +51,13 @@ class IRouterWebInterfaceController:
         raise Exception("No implement")
 
     def recover_devices(self):
+        """
+
+        :return:
+        """
+        raise Exception("No implement")
+
+    def check_data(self):
         """
 
         :return:

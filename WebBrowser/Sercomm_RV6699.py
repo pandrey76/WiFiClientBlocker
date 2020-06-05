@@ -20,14 +20,14 @@ base_class = getattr(base_module, base_class_name)
 
 class Sercomm_RV6699(base_class):
 
-    def __init__(self, url, login, password):
+    def __init__(self, url, login, password, data):
         """
 
         :param url:
         :param login:
         :param password:
         """
-        super().__init__(url, login, password)
+        super().__init__(url, login, password, data)
 
     def block_devices(self):
         """
@@ -62,6 +62,13 @@ class Sercomm_RV6699(base_class):
         :return:admin
         """
         return None
+
+    def check_data(self):
+        """
+
+        :return:
+        """
+        raise Exception("No implement")
 
 
 if __name__ == '__main__':

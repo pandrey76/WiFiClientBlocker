@@ -20,14 +20,14 @@ base_class = getattr(base_module, base_class_name)
 
 class iPhone6SE(base_class):
 
-    def __init__(self, url, login, password):
+    def __init__(self, url, login, password, data):
         """
 
         :param url:
         :param login:
         :param password:
         """
-        super().__init__(url, login, password)
+        super().__init__(url, login, password, data)
 
     def block_devices(self):
         """
@@ -72,6 +72,13 @@ class iPhone6SE(base_class):
         assert "No results found." not in driver.page_source
         driver.close()
         return None
+
+    def check_data(self):
+        """
+
+        :return:
+        """
+        raise Exception("No implement")
 
 
 if __name__ == '__main__':

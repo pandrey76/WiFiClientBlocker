@@ -87,7 +87,8 @@ class RoutersInspector:
         # print(current_router_implementation_module)
 
         realisation_class = getattr(current_router_implementation_module, class_name)
-        self.__CurrentRouterImplementation_object = realisation_class(url, login, password)
+        self.__CurrentRouterImplementation_object = realisation_class(url, login, password, self.__Data)
+        self.__CurrentRouterImplementation_object.check_data()
         # print(current_router_implementation_object)
 
     # def turn_on(self):
@@ -120,6 +121,7 @@ class RoutersInspector:
 
         :return:
         """
+
         if self.__Action == "block_devices":
             self.__CurrentRouterImplementation_object.block_devices()
         elif self.__Action == "recover_devices":
@@ -137,7 +139,7 @@ if __name__ == '__main__':
     # webbrowser.open_new("http://localhost")
     try:
         router_inspector = RoutersInspector()
-        router_inspector.turn_off()
+        router_inspector.process()
         #router_inspector.recover_devices()
         
     except Exception as er:
