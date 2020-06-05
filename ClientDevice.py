@@ -5,7 +5,7 @@ class ClientDevice:
 
     """
 
-    def __int__(self, name, mac, long_name, priority, ip):
+    def __init__(self, name, mac, long_name, priority, ip):
         """
 
         :param name:
@@ -43,3 +43,21 @@ class ClientDevice:
     ip = property(lambda self: self.__IP)
     """
     """
+
+    @classmethod
+    def get_json(cls, client_device):
+        """
+
+        :param client_device:
+        :return:
+        """
+        return None
+
+    @classmethod
+    def set_json(cls, json):
+        """
+
+        :param json:
+        :return:
+        """
+        return ClientDevice("", "", "", "")
