@@ -29,12 +29,6 @@ class Huawei_R100_1(base_class):
         """
         super().__init__(url, login, password, data)
 
-    def check_data(self):
-        """
-
-        :return:
-        """
-        raise Exception("No implement")
 
     def prepare(self):
         """

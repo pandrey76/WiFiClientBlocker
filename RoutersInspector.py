@@ -162,7 +162,7 @@ class RoutersInspector:
 
         :return:
         """
-        self.__CurrentRouterImplementation_object = self.geting_current_router_implementation()
+        self.geting_current_router_implementation()
         if self.__Action == "block_devices":
             self.__CurrentRouterImplementation_object.block_devices()
         elif self.__Action == "recover_devices":

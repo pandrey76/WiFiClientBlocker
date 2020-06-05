@@ -63,13 +63,6 @@ class Sercomm_RV6699(base_class):
         """
         return None
 
-    def check_data(self):
-        """
-
-        :return:
-        """
-        raise Exception("No implement")
-
 
 if __name__ == '__main__':
     obj = Sercomm_RV6699("http://IP/index.htm", "admin", "")

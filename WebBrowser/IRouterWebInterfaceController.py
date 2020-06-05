@@ -62,7 +62,10 @@ class IRouterWebInterfaceController:
 
         :return:
         """
-        raise Exception("No implement")
+        if type(self._Data) is list:
+            pass
+        else:
+            raise Exception("Wrong data format.")
 
     def run_default_browser(self):
         """

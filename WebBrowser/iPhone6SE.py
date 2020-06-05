@@ -73,13 +73,6 @@ class iPhone6SE(base_class):
         driver.close()
         return None
 
-    def check_data(self):
-        """
-
-        :return:
-        """
-        raise Exception("No implement")
-
 
 if __name__ == '__main__':
     obj = iPhone6SE("http://IP/index.htm", "admin", "")
