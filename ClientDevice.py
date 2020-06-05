@@ -1,3 +1,4 @@
+import json
 
 
 class ClientDevice:
@@ -54,10 +55,10 @@ class ClientDevice:
         return None
 
     @classmethod
-    def set_json(cls, json):
+    def set_json(cls, device_obj):
         """
 
-        :param json:
+        :param json_str:
         :return:
         """
-        return ClientDevice("", "", "", "")
+        return ClientDevice(device_obj["name"], device_obj["mac"], device_obj["long_name"], device_obj["priority"], "")

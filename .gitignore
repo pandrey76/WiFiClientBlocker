@@ -130,4 +130,4 @@ dmypy.json
 /auth.py
 /Routers.json
 /RemoteSources.json
-/Device.json
+/Devices.json

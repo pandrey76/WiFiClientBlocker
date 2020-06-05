@@ -3,7 +3,8 @@ import json
 import ipaddress
 from NetworkPerformance import NetworkInformer
 import importlib.util
-
+from ClientDevice import ClientDevice
+from WebBrowser.IRouterWebInterfaceController import IRouterWebInterfaceController
 
 def looking_router_info():
     with open("Routers.json", "r") as read_file:
@@ -114,14 +115,54 @@ class RoutersInspector:
 
         :return:
         """
-        return None
+     # {
+     #        "action": "block_devices",
+     #        "data":
+     #        [
+     #           "devices":
+     #            [
+     #                {
+     #                    "name": "i7",
+     #                },
+     #                {
+     #                    "name": "i5",
+     #                }
+     #           ]
+     #        ]
+     #    }
+
+        body_json = json.loads(self.__ResponseBody)
+        self.__Action = body_json["action"]
+        if IRouterWebInterfaceController.check_support_interface_methods(self.__Action) is False:
+            raise Exception("Not Supported action type.")
+        type_of_data = body_json["data"]
+        keys_of_data_dict = type_of_data.keys()
+        is_devices_key_flag = False
+        for key in keys_of_data_dict:
+            if key == "devices":
+                is_devices_key_flag = True
+                break
+        if is_devices_key_flag:
+            path_to_script_dir = os.path.dirname(os.path.realpath(__file__))
+            path_to_json_file = os.path.join(path_to_script_dir, "Devices.json")
+            my_devices = []
+            with open(path_to_json_file, "r") as read_file:
+                devices_meta_json = json.load(read_file)
+                for my_device in devices_meta_json["devices"]:
+                    my_devices.append(ClientDevice.set_json(my_device))
+
+            self.__Data = []
+            for device_name in type_of_data["devices"]:
+                for device in my_devices:
+                    if device_name == device.name:
+                        self.__Data.append(device)
 
     def process(self):
         """
 
         :return:
         """
-
+        self.__CurrentRouterImplementation_object = self.geting_current_router_implementation()
         if self.__Action == "block_devices":
             self.__CurrentRouterImplementation_object.block_devices()
         elif self.__Action == "recover_devices":
@@ -137,8 +178,27 @@ if __name__ == '__main__':
     # print("RoutersInspector start!!")
     # import webbrowser
     # webbrowser.open_new("http://localhost")
+
+    json_str = '{"action": "block_devices", "data": { "devices": ["Name1", "Name2", "default_name", "i7"] } }'
+
+    # json_str = '{
+    #     "action": "block_devices",
+    #     "data":
+    #     [
+    #         "devices":
+    #         [
+    #             {
+    #                 "name": "i7",
+    #             },
+    #             {
+    #                 "name": "i5",
+    #             }
+    #         ]
+    #     ]
+    # }'
+
     try:
-        router_inspector = RoutersInspector()
+        router_inspector = RoutersInspector(json_str)
         router_inspector.process()
         #router_inspector.recover_devices()
         
