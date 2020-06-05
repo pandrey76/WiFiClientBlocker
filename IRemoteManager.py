@@ -12,7 +12,7 @@ class IRemoteManager:
 
         """
         self.__IServer = IServer()
-        self.__RouterInspector = RoutersInspector()
+        # self.__RouterInspector = RoutersInspector()
 
     def is_my(self, response):
         """
