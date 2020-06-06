@@ -179,8 +179,8 @@ if __name__ == '__main__':
     # import webbrowser
     # webbrowser.open_new("http://localhost")
 
-    json_str = '{"action": "block_devices", "data": { "devices": ["Name1", "Name2", "default_name", "i7"] } }'
-
+    json_str_1 = '{"action": "block_devices", "data": { "devices": ["Name1", "Name2", "default_name", "i7"] } }'
+    json_str_2 = '{"action": "recover_devices", "data": { "devices": ["Name1", "Name2", "default_name", "i7"] } }'
     # json_str = '{
     #     "action": "block_devices",
     #     "data":
@@ -198,7 +198,7 @@ if __name__ == '__main__':
     # }'
 
     try:
-        router_inspector = RoutersInspector(json_str)
+        router_inspector = RoutersInspector(json_str_2)
         router_inspector.process()
         #router_inspector.recover_devices()
         

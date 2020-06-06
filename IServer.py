@@ -2,6 +2,7 @@ import os
 import json
 import imaplib
 import email
+import re
 
 from Response import Response
 
@@ -64,11 +65,11 @@ class IServer:
                     #         break
                     # if sender is None:
                     #     raise Exception("Response from not trusted server" )
-
-                    response = Response(author="", title=part["Subject"], body=part.get_payload(decode=True), ext_data="")
+                    # body_obj = part.get_payload(decode=True)
+                    email_body = re.findall(r"<div>(.*)<\/div>", str(part.get_payload(decode=True)))
+                    # print(type(email_body))
+                    response = Response(author="", title=part["Subject"], body=email_body[0], ext_data="")
                     return response
-
-
 
         finally:
             try:
@@ -82,4 +83,8 @@ class IServer:
 if __name__ == '__main__':
     server = IServer()
     response = server.get_response()
-    print(response)
+    # import re
+    # response = re.findall(r"<div>(.*)<\/div>", '<div>good</div>')
+    # response = HTMLParser.feed(data='<div>good</div>')
+    # from lxml.html import fromstring
+    print("Author: ", response.author, "Title: ", response.title, "Body: ", response.body, "Ext.Data: ", response.ext_data)

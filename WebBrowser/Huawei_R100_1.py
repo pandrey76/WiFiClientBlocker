@@ -83,20 +83,20 @@ class Huawei_R100_1(base_class):
         self.login_administrator()
 
         # Make blocking actions
-        sleep(15)
-        self.prepare()
-        
-        sleep(5)
-        pg.moveTo(607, 270)
-        pg.leftClick()
-        
-        sleep(5)
-        self.activate()
-        
-        #sleep(15)
-        #current_mposition_x, current_mposition_y = pg.position()
-        #print("x: ", current_mposition_x)
-        #print("y: ", current_mposition_y)
+        # sleep(15)
+        # self.prepare()
+        #
+        # sleep(5)
+        # pg.moveTo(607, 270)
+        # pg.leftClick()
+        #
+        # sleep(5)
+        # self.activate()
+        #
+        # #sleep(15)
+        # #current_mposition_x, current_mposition_y = pg.position()
+        # #print("x: ", current_mposition_x)
+        # #print("y: ", current_mposition_y)
         
         sleep(10)
         base_class.close_active_window()
@@ -107,29 +107,19 @@ class Huawei_R100_1(base_class):
         :return:admin
         """
         
-        self.run_default_browser()
-        # Login admin
-        sleep(15)
-        self.login_administrator()
+        from selenium import webdriver
+        from selenium.webdriver.common.keys import Keys
 
-        # Make unblocking actions
-        sleep(15)
-        self.prepare()
-        
-        sleep(5)
-        pg.moveTo(513, 270)
-        pg.leftClick()
-        
-        sleep(5)
-        self.activate()
-        
-        # sleep(15)
-        # current_mposition_x, current_mposition_y = pg.position()
-        # print("x: ", current_mposition_x)
-        # print("y: ", current_mposition_y)
-        
-        sleep(10)
-        base_class.close_active_window()
+        driver = webdriver.Firefox()
+        driver.get("http://www.python.org")
+        assert "Python" in driver.title
+        elem = driver.find_element_by_name("q")
+        elem.clear()
+        elem.send_keys("pycon")
+        elem.send_keys(Keys.RETURN)
+        assert "No results found." not in driver.page_source
+        driver.close()
+        return None
 
 
 if __name__ == '__main__':
