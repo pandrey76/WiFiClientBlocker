@@ -3,6 +3,9 @@ import pyautogui as pg
 from time import sleep
 import importlib.util
 import sys
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+
 # from IRouterWebInterfaceController import IRouterWebInterfaceController
 
 base_module_name = "IRouterWebInterfaceController"
@@ -75,31 +78,54 @@ class Huawei_R100_1(base_class):
 
         :return:
         """
-        # Run browser
-        self.run_default_browser()
+        browser = webdriver.Firefox()
 
-        # Login admin
-        sleep(15)
+        browser.get(self.url)
+
+        #assert 'Yahoo' in browser.title
+        sleep(5)
         self.login_administrator()
+        sleep(5)
+        elem = browser.find_element_by_id("Admin_0_5")
+        elem.click()
+        browser.implicitly_wait(5)
+        elem = browser.find_element_by_id("Admin_0_5_1")
+        elem.click()
+        sleep(3)
+        elem = browser.find_element_by_id("MACblackSelected1")
+        # elem = browser.find_element_by_id("MACDisableSelected1")
+        elem.click()
+        sleep(3)
+        elem = browser.find_element_by_id("btnApplyId")
+        elem.click()
+        sleep(3)
+        browser.quit()
 
-        # Make blocking actions
+        # # Run browser
+        # self.run_default_browser()
+        #
+        # # Login admin
         # sleep(15)
-        # self.prepare()
+        # self.login_administrator()
         #
-        # sleep(5)
-        # pg.moveTo(607, 270)
-        # pg.leftClick()
+        # # Make blocking actions
+        # # sleep(15)
+        # # self.prepare()
+        # #
+        # # sleep(5)
+        # # pg.moveTo(607, 270)
+        # # pg.leftClick()
+        # #
+        # # sleep(5)
+        # # self.activate()
+        # #
+        # # #sleep(15)
+        # # #current_mposition_x, current_mposition_y = pg.position()
+        # # #print("x: ", current_mposition_x)
+        # # #print("y: ", current_mposition_y)
         #
-        # sleep(5)
-        # self.activate()
-        #
-        # #sleep(15)
-        # #current_mposition_x, current_mposition_y = pg.position()
-        # #print("x: ", current_mposition_x)
-        # #print("y: ", current_mposition_y)
-        
-        sleep(10)
-        base_class.close_active_window()
+        # sleep(10)
+        # base_class.close_active_window()
 
     def recover_devices(self):
         """
