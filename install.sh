@@ -16,13 +16,29 @@ cd "$base_work_folder"
 # shellcheck disable=SC2005
 echo "Current folder:  $(pwd)"
 
-#Устанавливаем git
+sudo apt update
+
+# Install git
 sudo apt install git
+
+
+# sudo apt install python3-dev, python3-venv, python3-tk
+
+# Install Python development tools
+sudo apt install python3-dev
+
+# Install Python virtual environment
+sudo  apt install python3-venv
+
+# Install Python virtual environment
+sudo  apt install python3-tk
+
+# Install JSON quire
+sudo  apt install jq
 
 sudo apt update
 
 git clone "https://github.com/pandrey76/WiFiClientBlocker.git"
-
 
 # shellcheck disable=SC2162
 read -p "Python interpreter: " base_python_interpreter
