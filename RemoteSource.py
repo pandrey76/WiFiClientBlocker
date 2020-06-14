@@ -1,5 +1,4 @@
 
-
 class RemoteSource:
     """
 
@@ -31,7 +30,7 @@ class RemoteSource:
         :param param:
         :return:
         """
-        self.__SourcePath = source_path
+        self.__SourcePath = param
 
     @property
     def password(self):
@@ -48,7 +47,7 @@ class RemoteSource:
         :param param:
         :return:
         """
-        self.__Password = password
+        self.__Password = param
 
     @property
     def name(self):
@@ -65,4 +64,4 @@ class RemoteSource:
         :param param:
         :return:
         """
-        self.__Name = name
+        self.__Name = param

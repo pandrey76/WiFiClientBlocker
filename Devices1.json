@@ -1,10 +1,34 @@
 {
   "devices" :[
     {
-      "name": "",
+      "name": "i7",
       "mac": "",
-      "long_name": "",
-      "priority": ""
+      "long_name": "Work station Ubuntu",
+      "priority": "0"
+    },
+    {
+      "name": "micool",
+      "mac": "",
+      "long_name": "Micool, Android TV, WaxRain",
+      "priority": "2"
+    },
+    {
+      "name": "mibox",
+      "mac": "",
+      "long_name": "MiBox, Android TV, Xiaomi",
+      "priority": "2"
+    },
+    {
+      "name": "thunderobot",
+      "mac": "",
+      "long_name": "Notebook Thunder Robot",
+      "priority": "3"
+    },
+    {
+      "name": "lenovo",
+      "mac": "",
+      "long_name": "Lenovo Tab 10 Android",
+      "priority": "3"
     },
     {
       "name": "",
