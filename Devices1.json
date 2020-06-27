@@ -31,6 +31,12 @@
       "priority": "3"
     },
     {
+      "name": "asus_i5",
+      "mac": "",
+      "long_name": "Asus notebook i5",
+      "priority": "3"
+    },
+    {
       "name": "",
       "mac": "",
       "long_name": "",
