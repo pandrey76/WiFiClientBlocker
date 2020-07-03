@@ -81,24 +81,25 @@ class Huawei_R100_1(base_class):
         browser = webdriver.Firefox()
 
         browser.get(self.url)
-
-        #assert 'Yahoo' in browser.title
-        sleep(5)
-        self.login_administrator()
-        sleep(5)
-        elem = browser.find_element_by_id("Admin_0_5")
-        elem.click()
-        browser.implicitly_wait(5)
-        elem = browser.find_element_by_id("Admin_0_5_1")
-        elem.click()
-        sleep(3)
-        elem = browser.find_element_by_id("MACblackSelected1")
-        # elem = browser.find_element_by_id("MACDisableSelected1")
-        elem.click()
-        sleep(3)
-        elem = browser.find_element_by_id("btnApplyId")
-        elem.click()
-        sleep(3)
+        try:
+            #assert 'Yahoo' in browser.title
+            sleep(5)
+            self.login_administrator()
+            sleep(5)
+            elem = browser.find_element_by_id("Admin_0_5")
+            elem.click()
+            browser.implicitly_wait(5)
+            elem = browser.find_element_by_id("Admin_0_5_1")
+            elem.click()
+            sleep(3)
+            elem = browser.find_element_by_id("MACblackSelected1")
+            elem.click()
+            sleep(3)
+            elem = browser.find_element_by_id("btnApplyId")
+            elem.click()
+            sleep(3)
+        except:
+            pass
         browser.quit()
 
         # # Run browser
@@ -132,20 +133,44 @@ class Huawei_R100_1(base_class):
 
         :return:admin
         """
-        
-        from selenium import webdriver
-        from selenium.webdriver.common.keys import Keys
 
-        driver = webdriver.Firefox()
-        driver.get("http://www.python.org")
-        assert "Python" in driver.title
-        elem = driver.find_element_by_name("q")
-        elem.clear()
-        elem.send_keys("pycon")
-        elem.send_keys(Keys.RETURN)
-        assert "No results found." not in driver.page_source
-        driver.close()
-        return None
+        browser = webdriver.Firefox()
+
+        browser.get(self.url)
+        try:
+            #assert 'Yahoo' in browser.title
+            sleep(5)
+            self.login_administrator()
+            sleep(5)
+            elem = browser.find_element_by_id("Admin_0_5")
+            elem.click()
+            browser.implicitly_wait(5)
+            elem = browser.find_element_by_id("Admin_0_5_1")
+            elem.click()
+            sleep(3)
+            elem = browser.find_element_by_id("MACDisableSelected1")
+            elem.click()
+            sleep(3)
+            elem = browser.find_element_by_id("btnApplyId")
+            elem.click()
+            sleep(3)
+        except:
+            pass
+        browser.quit()
+
+        # from selenium import webdriver
+        # from selenium.webdriver.common.keys import Keys
+        #
+        # driver = webdriver.Firefox()
+        # driver.get("http://www.python.org")
+        # assert "Python" in driver.title
+        # elem = driver.find_element_by_name("q")
+        # elem.clear()
+        # elem.send_keys("pycon")
+        # elem.send_keys(Keys.RETURN)
+        # assert "No results found." not in driver.page_source
+        # driver.close()
+        # return None
 
 
 if __name__ == '__main__':
