@@ -6,10 +6,17 @@
             ""
   ],
   "remote_sources": [
+     {
+      "source_path" : "",
+      "password" : "",
+      "name" : "",
+      "description" : ""
+    },
     {
       "source_path" : "",
       "password" : "",
-      "name" : ""
+      "name" : "",
+      "description" : ""
     }
-  ]
+ ]
 }
