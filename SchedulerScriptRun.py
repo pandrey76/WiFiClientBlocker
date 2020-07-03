@@ -1,5 +1,7 @@
 import schedule
 import os
+import traceback
+import datetime
 from time import sleep
 # from RoutersInspector import RoutersInspector
 from IRemoteManager import IRemoteManager
@@ -16,7 +18,16 @@ def job():
         remote_manager.process()
     except Exception as er:
         with open("scheduler_err.log", 'a') as g:
-            g.write(str(er))
+            separate = "************************"
+            space = ' '
+            result_str = separate + space + str(datetime.datetime.now()) + space + separate
+            result_str += os.linesep
+            result_str += traceback.format_exc()
+            result_str += os.linesep
+            result_str += separate
+            result_str += separate
+            result_str += separate
+            g.write(result_str)
             g.write(os.linesep)
 
 
