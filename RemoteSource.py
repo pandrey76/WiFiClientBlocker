@@ -4,7 +4,7 @@ class RemoteSource:
 
     """
 
-    def __init__(self, source_path="", password="", name=""):
+    def __init__(self, source_path="", password="", name="", description=""):
         """
 
         :param source_path:
@@ -14,6 +14,7 @@ class RemoteSource:
         self.__SourcePath = source_path
         self.__Password = password
         self.__Name = name
+        self.__Description = description
 
     @property
     def source_path(self):
@@ -65,3 +66,20 @@ class RemoteSource:
         :return:
         """
         self.__Name = param
+
+    @property
+    def description(self):
+        """
+
+        :return:
+        """
+        return self.__Name
+
+    @description.setter
+    def description(self, param):
+        """
+
+        :param param:
+        :return:
+        """
+        self.__Description = param
