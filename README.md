@@ -495,4 +495,7 @@ Example Python script:
     driver.quit()
 
 And that's how to get chrome chromium chromium driver webdriver chromium-chromedriver chromedriver installed running 
-on raspbian raspberry pi rasp pi raspi                  
+on raspbian raspberry pi rasp pi raspi
+
+Установка ChromeDriver for Selenium through npm
+    https://www.npmjs.com/package/chromedriver                  
