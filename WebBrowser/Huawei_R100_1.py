@@ -78,7 +78,7 @@ class Huawei_R100_1(base_class):
 
         :return:
         """
-        browser = webdriver.Firefox()
+        browser = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver')
 
         browser.get(self.url)
         try:
@@ -134,7 +134,7 @@ class Huawei_R100_1(base_class):
         :return:admin
         """
 
-        browser = webdriver.Firefox()
+        browser = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver')
 
         browser.get(self.url)
         try:
