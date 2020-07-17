@@ -442,4 +442,57 @@ Sending email msg to gmail.com.
                 - Разблокировка роутера:
                     {"action": "recover_devices", "data": { "devices": ["Name1", "Name2", "default_name", "i7"] } }
 
-                  
+
+
+Success: How to run Selenium Chrome webdriver on Raspberry pi
+Purely making this post so it get indexed by google since it looks like I've blazed a new path in the last hour. 
+No need to upvote/comment etc...
+
+I'll be using python bindings for this guide, but any should work.
+
+From a fresh install of:
+
+    lsb_release -a
+    No LSB modules are available.
+    Distributor ID:	Raspbian
+    Description:	Raspbian GNU/Linux 9.1 (stretch)
+    Release:	9.1
+    Codename:	stretch
+    Open a terminal
+
+pip install selenium
+
+Launchpad has a precompiled and source for chromium-chromedriver. If you'd like to build from source, 
+that is out of scope from this guide.
+
+Visit: https://launchpad.net/ubuntu/trusty/+package/chromium-chromedriver Find the newest version that's 
+compiled for armhf
+
+chromium-chromedriver 61.0.3163.79-0ubuntu0.14.04.1196 in armhf (Updates)
+
+In the right hand side of the page there is a download for the .deb file, download that.
+
+In the version of raspbian I'm running you can simply double-click to install the package, otherwise 
+a quick google search for how to use "dpkg deb" will explain.
+
+It will install the driver to the path:
+
+/usr/lib/chromium-browser/chromedriver
+
+You will need to set the path in your code for the driver to work.
+
+Example Python script: 
+    
+    import time from selenium import webdriver
+    
+    driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver')  # Optional argument, if not specified will search path.
+    driver.get('http://www.google.com/xhtml');
+    time.sleep(5) # Let the user actually see something!
+    search_box = driver.find_element_by_name('q')
+    search_box.send_keys('ChromeDriver')
+    search_box.submit()
+    time.sleep(5) # Let the user actually see something!
+    driver.quit()
+
+And that's how to get chrome chromium chromium driver webdriver chromium-chromedriver chromedriver installed running 
+on raspbian raspberry pi rasp pi raspi                  
