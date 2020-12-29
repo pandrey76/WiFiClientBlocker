@@ -206,7 +206,7 @@ class Sercomm_RV6699(base_class):
         else:
             raise TypeError("The entering params must be allow, deny or disable")
 
-    def block_devices(self):
+    def manipulate_devices(self, deny_or_disable: str):
         """
 
         """
@@ -220,7 +220,7 @@ class Sercomm_RV6699(base_class):
 
             self.go_to_mac_filtration(browser)
             browser.implicitly_wait(3)
-            self.activate_mac_filtration(browser, "deny")
+            self.activate_mac_filtration(browser, deny_or_disable)
             browser.implicitly_wait(3)
             self.apply(browser)
             browser.implicitly_wait(60)
@@ -230,33 +230,19 @@ class Sercomm_RV6699(base_class):
         except Exception as ex:
             print(ex)
         browser.quit()
+
+    def block_devices(self):
+        """
+
+        """
+        self.manipulate_devices("deny")
 
     def recover_devices(self):
         """
 
         :return:admin
         """
-        browser = webdriver.Chrome('/usr/lib/chrome/chromedriver')
-
-        browser.get(self.url)
-        try:
-            sleep(5)
-            self.login_administrator()
-            sleep(5)
-
-            self.go_to_mac_filtration(browser)
-            browser.implicitly_wait(3)
-            self.activate_mac_filtration(browser, "disable")
-            browser.implicitly_wait(3)
-            self.apply(browser)
-            browser.implicitly_wait(60)
-
-            # After sleep must be function calling to correct work.
-            self.exit(browser)
-
-        except Exception as ex:
-            print(ex)
-        browser.quit()
+        self.manipulate_devices("disable")
 
 
 if __name__ == '__main__':
